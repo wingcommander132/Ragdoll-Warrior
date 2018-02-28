@@ -13,13 +13,13 @@ public class Sword : MonoBehaviour {
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        transform.position = activeLoc.transform.position;
-        transform.rotation = activeLoc.transform.rotation;
+        //position = activeLoc.transform.position;
+        //transform.rotation = activeLoc.transform.rotation;
     }
 
     // Update is called once per frame
     void Update() {
-        transform.position = new Vector3(activeLoc.transform.position.x, activeLoc.transform.position.y, transform.position.z);
+        //transform.position = new Vector3(activeLoc.transform.position.x, activeLoc.transform.position.y, transform.position.z);
     }
 
     void OnCollisionEnter(Collision colis)

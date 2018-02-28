@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RootMotion.FinalIK;
 
 public class JoystickController : MonoBehaviour {
     public LeftJoystick leftJoystick;
@@ -11,17 +12,25 @@ public class JoystickController : MonoBehaviour {
     public GameObject weapon;
     public float swingspeed;
     public float time = 0;
-    private bool wepactive = true;
+    private bool wepactive = false;
     private Sword wep;
     private Vector3 playerRot;
     private Animator PlayerAnimator;
+    private GameObject ArmMover;
+    private GameObject weppos;
+    private GameObject PHand;
+    private AimIK playerarm;
     public bool hit = false;
     // Use this for initialization
     void Start () {
         PlayerAnimator = GetComponent<Animator>();
+        weppos = GameObject.FindGameObjectWithTag("WepActiveLoc");
         GameObject wepGO = GameObject.FindGameObjectWithTag("PlayerWeapon");
         wep = wepGO.GetComponent<Sword>();
-        weapon = GameObject.Find("Sword");
+        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        ArmMover = GameObject.FindGameObjectWithTag("ArmMover");
+        PHand = ArmMover.GetComponent<ArmMover>().playerHand;
+        playerarm = GetComponent<AimIK>();
     }
 	
 	// Update is called once per frame
@@ -30,9 +39,34 @@ public class JoystickController : MonoBehaviour {
 
         leftJoystickInput = leftJoystick.GetInputDirection();
         rightJoystickInput = rightJoystick.GetInputDirection();
-        
+
         if (rightJoystickInput != Vector3.zero)
         {
+            playerarm.enabled = true;
+            //ArmMover.SetActive(true);
+            ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
+            
+            
+
+            if (wepactive == false)
+            {
+                weapon.SetActive(true);
+                wepactive = true;
+            }
+        }
+        else
+        {
+            playerarm.enabled = false;
+            ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
+            //ArmMover.SetActive(false);
+            
+            if (wepactive == true)
+            {
+                weapon.SetActive(false);
+                wepactive = false;
+            }
+        }
+            /*
             float animateweightstate = PlayerAnimator.GetLayerWeight(1);
 
             if(animateweightstate < 1.0f)
@@ -97,6 +131,15 @@ public class JoystickController : MonoBehaviour {
             PlayerAnimator.SetFloat("PX", 0.0f);
             PlayerAnimator.SetFloat("PY", 0.0f);
         }
+        */
+    }
 
+    private void FixedUpdate()
+    {
+        if (wepactive)
+        {
+            weapon.transform.position = weppos.transform.position;
+            weapon.transform.LookAt(ArmMover.gameObject.transform.position);
+        }
     }
 }

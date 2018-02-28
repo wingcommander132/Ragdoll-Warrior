@@ -49,8 +49,7 @@ public class SwordTracker : MonoBehaviour {
                 swingdirect = 0;
             }
         }
-
-        print("sd"+swingdirect);
+        
     }
 
     IEnumerator GetDirect()
@@ -66,10 +65,10 @@ public class SwordTracker : MonoBehaviour {
             float diffx = transform.position.x - startpos.x;
             float diffy = transform.position.y - startpos.y;
             float difflength = diffx + diffy;
-            if (difflength < 0.1f)
+            if (difflength < 0.0f)
                 swingdirect = -1;
             else
-            if (difflength > 0.1f)
+            if (difflength > 0.0f)
                 swingdirect = 1;
             else
                 swingdirect = 0;
