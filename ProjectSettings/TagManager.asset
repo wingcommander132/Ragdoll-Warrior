@@ -16,6 +16,10 @@ TagManager:
   - Waypoint
   - EnemyDetectRadius
   - EnemyAttackRadius
+  - Character 1
+  - Character 2
+  - ArmMover
+  - PlayerHand
   layers:
   - Default
   - TransparentFX
