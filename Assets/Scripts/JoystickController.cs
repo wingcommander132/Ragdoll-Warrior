@@ -12,7 +12,7 @@ public class JoystickController : MonoBehaviour {
     public GameObject weapon;
     public float swingspeed;
     public float time = 0;
-    private bool wepactive = false;
+    private bool wepactive = true;
     private Sword wep;
     private Vector3 playerRot;
     private Animator PlayerAnimator;
@@ -21,6 +21,7 @@ public class JoystickController : MonoBehaviour {
     private GameObject PHand;
     private AimIK playerarm;
     public bool hit = false;
+    public bool SpeedGetRunning = false;
     // Use this for initialization
     void Start () {
         PlayerAnimator = GetComponent<Animator>();
@@ -43,22 +44,23 @@ public class JoystickController : MonoBehaviour {
         if (rightJoystickInput != Vector3.zero)
         {
             playerarm.enabled = true;
-            //ArmMover.SetActive(true);
             ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
             
-            
-
             if (wepactive == false)
             {
                 weapon.SetActive(true);
                 wepactive = true;
             }
+
+            weapon.transform.position = weppos.transform.position;
+
+            if (SpeedGetRunning == false)
+                 StartCoroutine(SpeedandDistance());
         }
         else
         {
             playerarm.enabled = false;
             ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
-            //ArmMover.SetActive(false);
             
             if (wepactive == true)
             {
@@ -66,72 +68,6 @@ public class JoystickController : MonoBehaviour {
                 wepactive = false;
             }
         }
-            /*
-            float animateweightstate = PlayerAnimator.GetLayerWeight(1);
-
-            if(animateweightstate < 1.0f)
-            {
-                PlayerAnimator.SetLayerWeight(1, (animateweightstate + 0.1f));
-            }
-            
-            GameObject weppos = GameObject.FindGameObjectWithTag("WepActiveLoc");
-            Vector3 newpos = weppos.transform.position;
-            Quaternion newrot = weppos.transform.rotation;
-
-            //print(rightJoystickInput);
-            
-            if (wepactive == false)
-            {
-                weapon.SetActive(true);
-                wepactive = true;
-                if ((weapon.transform.position != newpos) || (weapon.transform.rotation != newrot))
-                {
-                    weapon.transform.SetPositionAndRotation(newpos, newrot);
-                }
-            }
-
-            weapon.transform.SetPositionAndRotation(newpos, newrot);
-
-            if (looking == 2)
-            {
-                PlayerAnimator.SetFloat("PX", rightJoystickInput.x);
-                PlayerAnimator.SetFloat("PY", rightJoystickInput.y);
-            }
-            else
-            {
-                PlayerAnimator.SetFloat("PX", -rightJoystickInput.x);
-                PlayerAnimator.SetFloat("PY", rightJoystickInput.y);
-            }
-            
-        }
-        else
-        {
-            float animateweightstate = PlayerAnimator.GetLayerWeight(1);
-
-            if (animateweightstate > 0.0f)
-            {
-                PlayerAnimator.SetLayerWeight(1, (animateweightstate - 0.1f));
-            }
-
-            GameObject wepstorepos = GameObject.FindGameObjectWithTag("WepStoreLoc");
-            Vector3 newpos = wepstorepos.transform.position;
-            Quaternion newrot = wepstorepos.transform.rotation;
-
-            
-            if (wepactive == true)
-            {
-                weapon.SetActive(false);
-                wepactive = false;
-                if ((weapon.transform.position != newpos) || (weapon.transform.rotation != newrot))
-                {
-                    weapon.transform.SetPositionAndRotation(newpos, newrot);
-                }
-            }
-            
-            PlayerAnimator.SetFloat("PX", 0.0f);
-            PlayerAnimator.SetFloat("PY", 0.0f);
-        }
-        */
     }
 
     private void FixedUpdate()
@@ -140,6 +76,27 @@ public class JoystickController : MonoBehaviour {
         {
             weapon.transform.position = weppos.transform.position;
             weapon.transform.LookAt(ArmMover.gameObject.transform.position);
+        }
+    }
+
+    public void ReturnWepSpeed()
+    {
+        StartCoroutine(SpeedandDistance());
+    }
+
+    IEnumerator SpeedandDistance()
+    {
+        if(wepactive)
+        {
+            SpeedGetRunning = true;
+
+            //Returns Units/Second
+            Vector3 posA = weapon.transform.position;
+            yield return new WaitForSecondsRealtime(0.01f);
+            Vector3 posB = weapon.transform.position;
+
+            swingspeed = Vector3.Distance(posA,posB) * 100;
+            SpeedGetRunning = false;
         }
     }
 }

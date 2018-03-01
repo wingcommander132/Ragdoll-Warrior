@@ -66,13 +66,14 @@
      <Compile Include="Assets\Assets\BzKovSoft\RagdollTemplate\Scripts\Tools\BzHealthItem.cs" />
      <Compile Include="Assets\Assets\BzKovSoft\RagdollTemplate\Scripts\Tools\BzSpeedController.cs" />
      <Compile Include="Assets\EnemyLookDetect.cs" />
-     <Compile Include="Assets\Scripts\BasicEnemy.cs" />
+     <Compile Include="Assets\Scripts\ArmMover.cs" />
      <Compile Include="Assets\Scripts\CameraPusher.cs" />
      <Compile Include="Assets\Scripts\EnemyAttackControll.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyDetection.cs" />
      <Compile Include="Assets\Scripts\EnemySight.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\JoystickController.cs" />
      <Compile Include="Assets\Scripts\Sword.cs" />
      <Compile Include="Assets\Scripts\SwordTracker.cs" />
@@ -174,6 +175,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/chris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

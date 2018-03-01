@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ragdoll Warrior", "Assembly-CSharp.csproj", "{E67B9CAE-ADB3-92EC-19A5-DB029E62CB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ragdoll Warrior", "Assembly-CSharp-firstpass.csproj", "{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ragdoll Warrior", "Assembly-CSharp-Editor-firstpass.csproj", "{3F6FC630-C192-0BA9-ED69-DC0E29E58723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{E67B9CAE-ADB3-92EC-19A5-DB029E62CB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E67B9CAE-ADB3-92EC-19A5-DB029E62CB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E67B9CAE-ADB3-92EC-19A5-DB029E62CB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB5FAD8-94FB-4FE5-6185-88C2125B1B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F6FC630-C192-0BA9-ED69-DC0E29E58723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6FC630-C192-0BA9-ED69-DC0E29E58723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F6FC630-C192-0BA9-ED69-DC0E29E58723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F6FC630-C192-0BA9-ED69-DC0E29E58723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

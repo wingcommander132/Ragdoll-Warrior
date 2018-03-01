@@ -20,6 +20,7 @@ TagManager:
   - Character 2
   - ArmMover
   - PlayerHand
+  - ScoreTextSpawn
   layers:
   - Default
   - TransparentFX

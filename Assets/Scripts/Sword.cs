@@ -30,8 +30,12 @@ public class Sword : MonoBehaviour {
         {
             EnemyController enemy = en.GetComponent<EnemyController>();
             ContactPoint point = colis.contacts[0];
-
-            enemy.Damage(baseDamage, point, colis.impulse);
+            player.GetComponent<JoystickController>().ReturnWepSpeed();
+            
+            float swingspd = player.GetComponent<JoystickController>().swingspeed;
+            print(swingspd);
+            player.GetComponent<JoystickController>().hit = true;
+            enemy.Damage(baseDamage, point, colis.relativeVelocity, swingspd);
         }
     }
 
