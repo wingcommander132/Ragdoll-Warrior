@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
         lookDetect = GetComponentInChildren<EnemyLookDetect>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         level = gameManager.round;
-        health = Mathf.Round(baseHealth + (baseHealth * (level / 10)));
+        health = Mathf.Round(baseHealth + (level * 10));
         maxhealth = health;
     }
 

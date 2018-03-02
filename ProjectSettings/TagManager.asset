@@ -21,6 +21,10 @@ TagManager:
   - ArmMover
   - PlayerHand
   - ScoreTextSpawn
+  - ScoreText
+  - HighScoreText
+  - RoundText
+  - MaxRoundsText
   layers:
   - Default
   - TransparentFX
