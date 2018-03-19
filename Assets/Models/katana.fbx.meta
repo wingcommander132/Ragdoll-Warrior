@@ -13,7 +13,22 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: tsuba.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lamina
+    second: {fileID: 2100000, guid: 304c35b1a4c689240a913967abe5454c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: punho
+    second: {fileID: 2100000, guid: b788ba8a5ec5d1c4cb1361473273d1b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tsuba
+    second: {fileID: 2100000, guid: 55d3061aed4fd044b89912b0fff830ef, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -44,7 +59,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1

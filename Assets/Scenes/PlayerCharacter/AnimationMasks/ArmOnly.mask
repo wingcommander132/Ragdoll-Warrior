@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ArmOnly
+  m_Mask: 00000000000000000000000000000000000000000100000000000000010000000000000000000000000000000100000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Character_Mesh
+    m_Weight: 1
+  - m_Path: Circle
+    m_Weight: 1
+  - m_Path: Cube_001
+    m_Weight: 1
+  - m_Path: Eyes
+    m_Weight: 1
+  - m_Path: Porl_Rig
+    m_Weight: 1
+  - m_Path: Porl_Rig/root
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/ik_foot_target_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/ik_foot_target_L/ik_toe_pivot_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/ik_foot_target_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/ik_foot_target_R/ik_toe_pivot_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/MCH_eyes_parent
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/MCH_eyes_parent/eyes
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/MCH_eyes_parent/eyes/eye_target_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/MCH_eyes_parent/eyes/eye_target_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/eye_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/eye_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/MCH_eyelid_follow_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/MCH_eyelid_follow_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/tongue_bottom
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_neck/DEF_head/tongue_bottom/tongue_tip
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/index_fngr_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/index_fngr_L/index_fngr_1_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/index_fngr_L/index_fngr_1_L/index_fngr_2_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/index_fngr_L/index_fngr_1_L/index_fngr_2_L/index_fngr_3_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/mid_fngr_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/mid_fngr_L/mid_fngr_1_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/mid_fngr_L/mid_fngr_1_L/mid_fngr_2_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/mid_fngr_L/mid_fngr_1_L/mid_fngr_2_L/mid_fngr_3_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/pinky_fngr_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/pinky_fngr_L/pinky_fngr_1_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/pinky_fngr_L/pinky_fngr_1_L/pinky_fngr_2_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/pinky_fngr_L/pinky_fngr_1_L/pinky_fngr_2_L/pinky_fngr_3_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/thumb_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/thumb_L/thumb_1_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_L/DEF_upper_arm_L/DEF_forearm_L/DEF_hand_L/thumb_L/thumb_1_L/thumb_2_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/index_fngr_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/index_fngr_R/index_fngr_1_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/index_fngr_R/index_fngr_1_R/index_fngr_2_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/index_fngr_R/index_fngr_1_R/index_fngr_2_R/index_fngr_3_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/mid_fngr_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/mid_fngr_R/mid_fngr_1_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/mid_fngr_R/mid_fngr_1_R/mid_fngr_2_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/mid_fngr_R/mid_fngr_1_R/mid_fngr_2_R/mid_fngr_3_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/pinky_fngr_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/pinky_fngr_R/pinky_fngr_1_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/pinky_fngr_R/pinky_fngr_1_R/pinky_fngr_2_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/pinky_fngr_R/pinky_fngr_1_R/pinky_fngr_2_R/pinky_fngr_3_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/thumb_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/thumb_R/thumb_1_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_body/DEF_chest/DEF_shoulder_R/DEF_upper_arm_R/DEF_forearm_R/DEF_hand_R/thumb_R/thumb_1_R/thumb_2_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L/DEF_hip_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L/DEF_hip_L/DEF_thigh_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L/DEF_hip_L/DEF_thigh_L/DEF_shin_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L/DEF_hip_L/DEF_thigh_L/DEF_shin_L/DEF_foot_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_L/DEF_hip_L/DEF_thigh_L/DEF_shin_L/DEF_foot_L/DEF_toes_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R/DEF_hip_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R/DEF_hip_R/DEF_thigh_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R/DEF_hip_R/DEF_thigh_R/DEF_shin_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R/DEF_hip_R/DEF_thigh_R/DEF_shin_R/DEF_foot_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/DEF_hips/DEF_hipParent_R/DEF_hip_R/DEF_thigh_R/DEF_shin_R/DEF_foot_R/DEF_toes_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_L/ik_thigh_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_L/ik_thigh_L/ik_shin_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_L/ik_thigh_L/ik_shin_L/ik_knee_path_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_L/ik_thigh_L/ik_shin_L/ik_knee_path_L/MCH_leg_stretch_L
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_R/ik_thigh_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_R/ik_thigh_R/ik_shin_R
+    m_Weight: 1
+  - m_Path: Porl_Rig/root/pelvis/ik_hip_R/ik_thigh_R/ik_shin_R/ik_knee_path_R
+    m_Weight: 1
+  - m_Path: Shape_body
+    m_Weight: 1
+  - m_Path: Shape_chest
+    m_Weight: 1
+  - m_Path: Shape_elbow
+    m_Weight: 1
+  - m_Path: Shape_eye_target
+    m_Weight: 1
+  - m_Path: Shape_eyes
+    m_Weight: 1
+  - m_Path: Shape_face
+    m_Weight: 1
+  - m_Path: Shape_finger1
+    m_Weight: 1
+  - m_Path: Shape_finger2
+    m_Weight: 1
+  - m_Path: Shape_finger_control
+    m_Weight: 1
+  - m_Path: Shape_fk_foot
+    m_Weight: 1
+  - m_Path: Shape_fk_hand
+    m_Weight: 1
+  - m_Path: Shape_fk_hip_L
+    m_Weight: 1
+  - m_Path: Shape_fk_hip_R
+    m_Weight: 1
+  - m_Path: Shape_fk_shin
+    m_Weight: 1
+  - m_Path: Shape_fk_shoulder
+    m_Weight: 1
+  - m_Path: Shape_fk_thigh
+    m_Weight: 1
+  - m_Path: Shape_fk_toes
+    m_Weight: 1
+  - m_Path: Shape_fk_upper_arm_L
+    m_Weight: 1
+  - m_Path: Shape_fk_upper_arm_R
+    m_Weight: 1
+  - m_Path: Shape_foot_target
+    m_Weight: 1
+  - m_Path: Shape_head
+    m_Weight: 1
+  - m_Path: Shape_head_stretch
+    m_Weight: 1
+  - m_Path: Shape_ik_hand
+    m_Weight: 1
+  - m_Path: Shape_KneePath
+    m_Weight: 1
+  - m_Path: Shape_neck
+    m_Weight: 1
+  - m_Path: Shape_pelvis
+    m_Weight: 1
+  - m_Path: Shape_thumb
+    m_Weight: 1
+  - m_Path: Shape_toe_pivot
+    m_Weight: 1
+  - m_Path: Shape_tongue_bottom
+    m_Weight: 1
+  - m_Path: Shape_tongue_tip
+    m_Weight: 1
