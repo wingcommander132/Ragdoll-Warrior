@@ -316,13 +316,13 @@
     <Compile Include="Assets\Assets\BzKovSoft\RagdollTemplate\Scripts\Tools\BzSpeedController.cs" />
     <Compile Include="Assets\EnemyLookDetect.cs" />
     <Compile Include="Assets\Scripts\ArmMover.cs" />
-    <Compile Include="Assets\Scripts\BasicEnemy.cs" />
     <Compile Include="Assets\Scripts\CameraPusher.cs" />
     <Compile Include="Assets\Scripts\EnemyAttackControll.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EnemyDetection.cs" />
     <Compile Include="Assets\Scripts\EnemySight.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\JoystickController.cs" />
     <Compile Include="Assets\Scripts\Sword.cs" />
     <Compile Include="Assets\Scripts\SwordTracker.cs" />

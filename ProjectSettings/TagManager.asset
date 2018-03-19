@@ -12,15 +12,28 @@ TagManager:
   - WalkLineNear
   - WalkLineFar
   - EnemyWalkLine
-  - Destructible
-  - Waypoint
   - EnemyDetectRadius
   - EnemyAttackRadius
-  - Character 1
-  - Character 2
   - ArmMover
   - PlayerHand
+  - ScoreText
+  - HighScoreText
+  - RoundText
+  - MaxRoundsText
+  - EnemyRLookStop
+  - EnemyLLookStop
+  - EnemyArmMove
+  - EnemyHand
+  - EnemyBlocker
+  - EnemyLifeWarning
+  - PlayerHead
+  - EnemyHead
+  - EnemyContainer
+  - EnemyMidEmpty
   - ScoreTextSpawn
+  - EnemyPelvis
+  - PlayerUI
+  - JoystickCanvas
   layers:
   - Default
   - TransparentFX
@@ -34,8 +47,8 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
-  - 
+  - EnemyEXT
+  - EnemyBlocker
   - 
   - 
   - 

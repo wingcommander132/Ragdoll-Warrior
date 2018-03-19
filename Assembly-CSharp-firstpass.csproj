@@ -51,6 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\LeanTween\LeanAudio.cs" />
+     <Compile Include="Assets\Plugins\LeanTween\LeanTest.cs" />
+     <Compile Include="Assets\Plugins\LeanTween\LeanTween.cs" />
+     <Compile Include="Assets\Plugins\LeanTween\LTDescr.cs" />
+     <Compile Include="Assets\Plugins\LeanTween\LTDescrOptional.cs" />
+     <Compile Include="Assets\Plugins\LeanTween\LTSeq.cs" />
      <Compile Include="Assets\Plugins\RootMotion\FinalIK\_DEMOS\Aim IK\Scripts\AimBoxing.cs" />
      <Compile Include="Assets\Plugins\RootMotion\FinalIK\_DEMOS\Aim IK\Scripts\AimSwing.cs" />
      <Compile Include="Assets\Plugins\RootMotion\FinalIK\_DEMOS\Aim IK\Scripts\SimpleAimingSystem.cs" />
