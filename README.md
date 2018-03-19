@@ -13,7 +13,5 @@ Future plans include:
 - PC port with controller support as a testbed for console viability
 - Expansion of characters, story, lore and world design.
 
-For an archive of past and current builds for Android and Windows, you can check the Google Drive folder at the following link:
-https://drive.google.com/open?id=1s3JACU--wVMajd-D2omOjNEEaC02vfS0
 
 
