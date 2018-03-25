@@ -27,3 +27,5 @@ Library/
 *.meta
 
 Builds/
+
+\.vscode/
