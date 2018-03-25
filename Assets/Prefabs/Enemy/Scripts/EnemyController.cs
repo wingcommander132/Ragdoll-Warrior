@@ -7,6 +7,7 @@ using RootMotion.FinalIK;
 
 public class EnemyController : MonoBehaviour {
     public Animator animator;
+    public float forcedZPos;
     public float recoveryTime = 2.0f;
     public GameObject target = null;
     private bool enemySpotted = false;
@@ -22,26 +23,22 @@ public class EnemyController : MonoBehaviour {
     private int hitsTaken = 0;
     private Vector3 takenColis = Vector3.zero;
     private Collider PlayerBlocker;
-
+    public string blockAnimationString;
+    public string[] attackAnimationStrings;
+    public string[] secondaryAnimationStrings;
+    public GameObject wep;
+    private MeshCollider wepCol;
     // Use this for initialization
     void Start() {
         animator = GetComponent<Animator>();
-        GameObject obj = transform.parent.gameObject;
-        parent = gameObject.transform.parent.gameObject;
-        lowwarning = obj.GetComponentInChildren<LifeWarning>().gameObject;
+        lowwarning = GetComponentInChildren<LifeWarning>().gameObject;
         lowwarning.SetActive(false);
-
-        Collider[] cols = parent.GetComponentsInChildren<Collider>();
-        foreach (Collider col in cols)
-        {
-            if (col.gameObject.tag == "EnemyBlocker")
-                PlayerBlocker = col;
-        }
+        wepCol = wep.GetComponent<MeshCollider>();
+        wepCol.enabled = false;
     }
 
     // Update is called once per frame
     void Update() {
-
         if (maxhealth - hitsTaken <= 1)
             lowwarning.SetActive(true);
         
@@ -92,25 +89,23 @@ public class EnemyController : MonoBehaviour {
 
     void OnCollisionEnter(Collision cols)
     {
-
+        if(cols.gameObject.tag == "Killer")
+        {
+            StartCoroutine(Finisher());
+        }
     }
 
     public IEnumerator Recover()
     {
-        PlayerBlocker.enabled = false;
-
+        //GetComponent<Collider>().enabled = false;
         recovering = true;
         reacting = true;
         yield return new WaitForSeconds(recoveryTime);
-        Vector3 save = transform.position;
-        parent.transform.position = transform.position;
         animator.enabled = true;
-        transform.position = save;
         animator.Play("GetUp");
         float wait = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSecondsRealtime(wait);
-
-        PlayerBlocker.enabled = true;
+        
         recovering = false;
         reacting = false;
         GetComponent<Collider>().enabled = true;
@@ -118,19 +113,20 @@ public class EnemyController : MonoBehaviour {
 
     IEnumerator Attack()
     {
-
+        wepCol.enabled = true;
         attacking = true;
 
-        animator.SetTrigger("Attack"); 
-
-        yield return new WaitForSecondsRealtime(2.0f);
+        animator.Play(Animator.StringToHash(attackAnimationStrings[Random.Range(0, attackAnimationStrings.Length - 1)]));
+        float wait = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSecondsRealtime(3.0f);
+        transform.LookAt(new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z));
 
         attacking = false;
+        wepCol.enabled = false;
     }
 
     public IEnumerator Finisher()
     {
-        PlayerBlocker.enabled = false;
         animator.enabled = false;
         yield return new WaitForSecondsRealtime(4.0f);
         Die();
@@ -140,7 +136,7 @@ public class EnemyController : MonoBehaviour {
     {
         EnemySpawner enspawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
         enspawn.enemyKilled();
-        Destroy(gameObject.transform.parent.gameObject);
+        Destroy(gameObject);
         return;
     }
 
@@ -167,30 +163,10 @@ public class EnemyController : MonoBehaviour {
 
         takenColis = rb.velocity;
 
-            float stutter = force.relativeVelocity.magnitude - takenColis.magnitude;
+        float stutter = force.relativeVelocity.magnitude - takenColis.magnitude;
         if (!reacting)
         {
-            if (Random.Range(0.0f, 10.0f) > 5.0f)
-            {
-                reacting = true;
-
-                if (rb == default(Rigidbody))
-                    print("EnemyPelvis tag likely not set.");
-
-                animator.enabled = false;
-
-                rb.AddForceAtPosition(force.relativeVelocity, new Vector3(0.0f, point.point.y, point.point.x));
-
-                GetComponent<Collider>().enabled = false;
-
-                StartCoroutine(Recover());
-
-            }
-            else
-            {
-                StartCoroutine(takeHit());
-            }
-
+             StartCoroutine(takeHit());
         }
             
 
@@ -200,8 +176,8 @@ public class EnemyController : MonoBehaviour {
     {
         GetComponent<Collider>().enabled = false;
         reacting = true;
-        animator.SetTrigger("Hit");
-        yield return new WaitForSecondsRealtime(0.4f);
+        animator.Play(Animator.StringToHash(secondaryAnimationStrings[Random.Range(0,secondaryAnimationStrings.Length-1)]));
+        yield return new WaitForSecondsRealtime(0.5f);
         GetComponent<Collider>().enabled = true;
         reacting = false;
     }
@@ -245,9 +221,11 @@ public class EnemyController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if ((transform.localPosition.y < 0.14f)&&(!reacting))
-            transform.localPosition = new Vector3(transform.localPosition.x, 0.16f, transform.localPosition.z);
+        if (transform.position.z != forcedZPos)
+            transform.position = new Vector3(transform.position.x, transform.position.y, forcedZPos);
         
+
+
     }
     
 }

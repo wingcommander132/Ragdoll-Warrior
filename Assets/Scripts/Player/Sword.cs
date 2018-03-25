@@ -7,22 +7,20 @@ public class Sword : MonoBehaviour {
     private GameObject player;
     public float baseDamage = 10.0f;
     private bool isHit = false;
-    public GameObject mainBody;
     private Collider swordcol;
+    private ParticleSystem particles;
     // Use this for initialization
     void Start() {
         if(activeLoc == null)
             activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
 
         player = GameObject.FindGameObjectWithTag("Player");
-
-        //position = activeLoc.transform.position;
-        //transform.rotation = activeLoc.transform.rotation;
+        particles = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update() {
-        transform.position = new Vector3(activeLoc.transform.position.x, activeLoc.transform.position.y, transform.position.z);
+
     }
 
     void OnCollisionEnter(Collision colis)
@@ -48,14 +46,13 @@ public class Sword : MonoBehaviour {
 
                 Vector3 BounceEnd = Vector3.zero;
 
-                if (player.GetComponent<JoystickController>().looking == 2)
+                if (player.GetComponent<JoystickController>().looking == 1)
                 {
-                    BounceEnd = new Vector3((-ArmMover.transform.position.x + ((swingspd / 300) + colis.relativeVelocity.normalized.magnitude)) / 2, ((ArmMover.transform.position.y + (swingspd / 300)) + colis.relativeVelocity.normalized.magnitude), ArmMover.transform.position.z).normalized * -10;
-                    BounceEnd = new Vector3(BounceEnd.x, -BounceEnd.y, BounceEnd.z);
+                    BounceEnd = new Vector3(ArmMover.transform.position.x - 2.0f, ArmMover.transform.position.y  + 1.5f, ArmMover.transform.position.z);
                 }
                 else
                 {
-                    BounceEnd = new Vector3(-(ArmMover.transform.position.x - ((swingspd / 300) + colis.relativeVelocity.normalized.magnitude)) / 2, ((ArmMover.transform.position.y + (swingspd / 300)) + colis.relativeVelocity.normalized.magnitude) / 2, ArmMover.transform.position.z).normalized * 10;
+                    BounceEnd = new Vector3(ArmMover.transform.position.x + 2.0f, ArmMover.transform.position.y + 1.5f, ArmMover.transform.position.z);
                 }
             
 
@@ -69,9 +66,9 @@ public class Sword : MonoBehaviour {
                 test[3] = BounceEnd;
 
                 LTBezierPath BounceBackPath = new LTBezierPath(test);
-                LeanTween.move(ArmMover, BounceBackPath, 0.4f * colis.relativeVelocity.normalized.magnitude).setEase(LeanTweenType.easeOutQuad);
-
-                float t = 0.4f * colis.relativeVelocity.normalized.magnitude;
+                LeanTween.move(ArmMover, BounceBackPath, 0.5f).setEase(LeanTweenType.easeOutQuad);
+                particles.Play();
+                float t = 0.5f;
                 StartCoroutine(WaitAfterHit(t));
             }   
             
@@ -80,7 +77,11 @@ public class Sword : MonoBehaviour {
 
     IEnumerator WaitAfterHit(float time)
     {
-        yield return new WaitForSeconds(time);
+        float scale = Time.timeScale;
+        Time.timeScale = 0.6f;
+        Handheld.Vibrate();
+        yield return new WaitForSecondsRealtime(1.0f);
+        Time.timeScale = scale;
         swordcol.enabled = true;
         isHit = player.GetComponent<JoystickController>().hit = false;
     }
