@@ -13,6 +13,7 @@ namespace RWGameManager
         //public GameObject EnemySpawns;
         public Transform[] spawnlocs;
         public int enemiesToSpawn = 2;
+        private int lastused;
 
         // Use this for initialization
         void Start()
@@ -54,16 +55,22 @@ namespace RWGameManager
 
         public void enemyKilled()
         {
-
+            enemysAlive--;
+            GetComponent<GameManager>().AddToScore(30.0f);
         }
 
         public void Trigger_spawn()
         {
             int num = Random.Range(0, spawnlocs.Length - 1);
+
+            if(lastused == num)
+                num = Random.Range(0, spawnlocs.Length - 1);
+                
+            
             loc = spawnlocs[num];
+            lastused = num;
             GameObject current = Instantiate(enemy, loc, true);
             enemyscurr[enemysAlive] = current;
-            print(current.name);
             current.transform.position = loc.transform.position;
             enemysAlive++;
         }

@@ -16,6 +16,7 @@ namespace RWGameManager
         private GameObject playerJoystickController;
         private Scene currentScene;
         private bool paused = false;
+        public int _highScore;
         private GameObject playerUI;
         private float IntTimeScale;
         
@@ -27,6 +28,9 @@ namespace RWGameManager
             scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
             playerJoystickController = GameObject.FindGameObjectWithTag("JoystickCanvas");
             playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+
+            if(PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_highScore") != 0)
+                _highScore = PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_highScore");
         }
 	
 	    // Update is called once per frame
@@ -41,6 +45,17 @@ namespace RWGameManager
 
         void FixedUpdate()
         {
+            if(score > _highScore)
+            {
+                _highScore = score;
+                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_highScore",_highScore);
+            }
+               
+
+            
+
+
+
             if(Input.GetKey(KeyCode.Escape))
             {
                 PauseGame();
@@ -96,7 +111,7 @@ namespace RWGameManager
 
         public void AddRoundWon()
         {
-            score += round * 10;
+            score += 100;
             round++;
         }
     }

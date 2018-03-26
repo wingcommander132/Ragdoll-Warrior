@@ -15,7 +15,7 @@ public class GameLoad : MonoBehaviour {
 	private AsyncOperation asyncLoad;
 	// Use this for initialization
 	void Start () {
-		SceneManager.UnloadSceneAsync("MainMenu");
+		// SceneManager.UnloadSceneAsync("MainMenu");
 
 		if(GameObject.Find("LoadingIcon"))
 		{
@@ -38,6 +38,7 @@ public class GameLoad : MonoBehaviour {
 		}
 
 		asyncLoad = SceneManager.LoadSceneAsync(levelToLoad);
+		Debug.Log(asyncLoad);
 		//asyncLoad.allowSceneActivation = false;
 	}
 	
@@ -51,7 +52,7 @@ public class GameLoad : MonoBehaviour {
 			}
 		}
 
-		print(asyncLoad.progress);
+		// print(asyncLoad.progress);
 
 		if(asyncLoad.isDone)
 		{
