@@ -127,6 +127,8 @@ public class EnemyController : MonoBehaviour {
 
     public IEnumerator Finisher()
     {
+        wep.SetActive(false);
+        lowwarning.SetActive(false);
         animator.enabled = false;
         yield return new WaitForSecondsRealtime(4.0f);
         Die();

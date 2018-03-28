@@ -22,7 +22,7 @@ namespace RWGameManager
                 int counter = 0;
                 foreach (GameObject sp in sps)
                 {
-                    if (counter != sps.Length)
+                    if (counter != sps.Length - 1)
                     {
                         spawnlocs[counter] = sp.transform;
                         counter++;

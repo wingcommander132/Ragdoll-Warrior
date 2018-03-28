@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RootMotion.FinalIK;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using RWGameManager;
 
 public class JoystickController : MonoBehaviour {
@@ -23,7 +24,7 @@ public class JoystickController : MonoBehaviour {
     private Animator PlayerAnimator;
     private CharacterController charCont;
     private GameObject ArmMover;
-    private GameObject weppos;
+    public GameObject weppos;
     private GameObject PHand;
     public Vector3 leftJoystickInput;
     public Vector3 rightJoystickInput;
@@ -42,29 +43,103 @@ public class JoystickController : MonoBehaviour {
     private CapsuleCollider playerCol;
     public bool grounded = false;
     private bool reacting = false;
+    private Vector3 veloc = Vector3.zero;
+    public int currentWeaponIndex = 0;
+    public GameObject[] weapons;
+    public int maxWeapons = 5;
+    private GameObject wepPanel;
+    private Button[] wepbuts;
     // Use this for initialization
     void Start () {
-        if(forcedZPos == null)
-            forcedZPos = transform.position.z;
-
         maxHealth = health;
-
         playerAnimsCont = GetComponent<Animation>();
         playerCol = GetComponent<CapsuleCollider>();
         PlayerAnimator = GetComponent<Animator>();
         weppos = GameObject.FindGameObjectWithTag("WepActiveLoc");
-        GameObject wepGO = GameObject.FindGameObjectWithTag("PlayerWeapon");
-        wep = wepGO.GetComponent<Sword>();
-        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        wepPanel = GameObject.FindGameObjectWithTag("WeaponsPanel");
+        //GameObject wepGO = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        //wep = wepGO.GetComponent<Sword>();
+       // weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
         ArmMover = GameObject.FindGameObjectWithTag("ArmMover");
         PHand = ArmMover.GetComponent<ArmMover>().playerHand;
         playerarm = GetComponent<AimIK>();
+
+        GameObject[] arr = GameObject.FindGameObjectsWithTag("PlayerWeapon");
+        if(arr.Length < maxWeapons)
+            weapons = new GameObject[arr.Length];
+        else
+            weapons = new GameObject[maxWeapons];
+
+        wepbuts = wepPanel.GetComponentsInChildren<Button>(true);
+
+        int count = 0;
+        foreach (GameObject arrItem in arr)
+        {
+            if(arrItem.name == "SMG")
+            {
+                SMG script = arrItem.GetComponent<SMG>();
+                weapons[script.weaponIndex] = arrItem;
+            }
+
+            if (arrItem.name == "Sword")
+            {
+                Sword script = arrItem.GetComponent<Sword>();
+                weapons[script.weaponIndex] = arrItem;
+            }
+
+            if (arrItem.name == "Pistol")
+            {
+                Pistol script = arrItem.GetComponent<Pistol>();
+                weapons[script.weaponIndex] = arrItem;
+            }
+
+            wepbuts[count].gameObject.SetActive(true);
+            arrItem.SetActive(false);
+            count++;
+        }
+        
+        weapon = weapons[currentWeaponIndex];
+
     }
 	
 	// Update is called once per frame
-	void Update () { 
+	void Update () {
+        rightJoystickInput = ArmMover.GetComponent<ArmMover>().maxDistFromX * rightJoystick.GetInputDirection();
 
+        if (GetComponent<Rigidbody>().velocity.y < -4 || GetComponent<Rigidbody>().velocity.y > 4)
+            grounded = false;
+
+        if ((rightJoystickInput != Vector3.zero) || (hit))
+        {
+            playerarm.enabled = true;
+            LeanTween.moveX(ArmMover, PHand.transform.position.x + (ArmMover.GetComponent<ArmMover>().maxDistFromX * rightJoystickInput.x),0.2f);
+            LeanTween.moveY(ArmMover, PHand.transform.position.y + (ArmMover.GetComponent<ArmMover>().maxDistFromY * rightJoystickInput.y), 0.2f);
+            //ArmMover.transform.position = new Vector3(PHand.transform.position.x + (ArmMover.GetComponent<ArmMover>().maxDistFromX * rightJoystickInput.x), PHand.transform.position.y + (ArmMover.GetComponent<ArmMover>().maxDistFromY * rightJoystickInput.y));
+
+            if (wepactive == false)
+            {
+                weapon.SetActive(true);
+                wepactive = true;
+            }
+            
+        }
+        else
+        {
+            playerarm.enabled = false;
+            ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
+
+            if (wepactive == true)
+            {
+                weapon.SetActive(false);
+                wepactive = false;
+            }
+        }
+
+        weapon.transform.position = weppos.transform.position;
+       // weapon.transform.LookAt(new Vector3(PHand.transform.position.x + (ArmMover.GetComponent<ArmMover>().maxDistFromX * rightJoystickInput.x), PHand.transform.position.y + (ArmMover.GetComponent<ArmMover>().maxDistFromY * rightJoystickInput.y), 0));
     }
+
+
 
     private void FixedUpdate()
     {
@@ -73,7 +148,7 @@ public class JoystickController : MonoBehaviour {
         PlayerAnimator.SetBool("Grounded", grounded);
 
         leftJoystickInput =  leftJoystick.GetInputDirection();
-        rightJoystickInput = 1.5f * rightJoystick.GetInputDirection();
+        rightJoystickInput = 2 * rightJoystick.GetInputDirection();
 
         if(health <= 0)
         {
@@ -85,33 +160,7 @@ public class JoystickController : MonoBehaviour {
             Jump();
         }
 
-        if ((rightJoystickInput != Vector3.zero)||(hit))
-        {
-            playerarm.enabled = true;
-       
-            if(!hit)
-                ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
-
-            if (wepactive == false)
-            {
-                weapon.SetActive(true);
-                wepactive = true;
-            }
-
-            weapon.transform.position = weppos.transform.position;        
-        }
-
-        else
-        {
-            playerarm.enabled = false;
-            ArmMover.transform.position = new Vector3(PHand.transform.position.x + rightJoystickInput.x, PHand.transform.position.y + rightJoystickInput.y);
-            
-            if (wepactive == true)
-            {
-                weapon.SetActive(false);
-                wepactive = false;
-            }
-        }
+        
 
         if(leftJoystickInput != Vector3.zero && movementAllowed)
         {
@@ -140,6 +189,10 @@ public class JoystickController : MonoBehaviour {
             if (!grounded)
             {
                 GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x + (looking*0.05f), GetComponent<Rigidbody>().velocity.y, 0);
+            }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(leftJoystickInput.x * movespeedMod, GetComponent<Rigidbody>().velocity.y, 0);
             }
         }
         else
@@ -171,9 +224,14 @@ public class JoystickController : MonoBehaviour {
             {
                 GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x + (looking * 0.05f), GetComponent<Rigidbody>().velocity.y, 0);
             }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(Input.GetAxis("Horizontal") * movespeedMod, GetComponent<Rigidbody>().velocity.y, 0);
+            }
         }
         else
         {
+            GetComponent<Rigidbody>().velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
             moving = false;
             PlayerAnimator.SetFloat("Forward",0.0f, 0.2f, Time.deltaTime);
         }
@@ -211,8 +269,9 @@ public class JoystickController : MonoBehaviour {
             if (SpeedGetRunning == false)
                 StartCoroutine(SpeedandDistance());
 
-            weapon.transform.position = weppos.transform.position;
-            weapon.transform.LookAt(ArmMover.gameObject.transform.position);
+            //weapon.transform.position = weppos.transform.position;
+
+            
         }
 
         if (!grounded && !falling)
@@ -220,6 +279,19 @@ public class JoystickController : MonoBehaviour {
 
         if (grounded)
             StopCoroutine(Falling());
+        
+        
+    }
+
+    public void WepChange(int wepIndex)
+    {
+        foreach(GameObject wep in weapons)
+        {
+            wep.SetActive(false);
+        }
+
+        weapons[wepIndex].SetActive(true);
+        weapon = weapons[wepIndex];
     }
 
     public void ReturnWepSpeed()
@@ -239,18 +311,35 @@ public class JoystickController : MonoBehaviour {
     IEnumerator Falling()
     {
         falling = true;
-        yield return new WaitForSecondsRealtime(2.2f);
-        if(!grounded)
+        int counter = 0;
+        int numNotG = 0;
+        while(counter < 20)
+        {
+            counter++;
+            yield return new WaitForSeconds(0.1f);
+
+            if (!grounded)
+                numNotG++;
+
+            print(numNotG);
+        }
+
+        if (numNotG == 19)
+            falling = true;
+        else
+            falling = false;
+
+        if (falling)
         {
             movementAllowed = false;
-            CapsuleCollider cap = GetComponent<CapsuleCollider>();
+            //CapsuleCollider cap = GetComponent<CapsuleCollider>();
             //cap.enabled = false;
             PlayerAnimator.enabled = false;
             yield return new WaitUntil(() => grounded == true);
             PlayerAnimator.enabled = true;
             PlayerAnimator.Play(Animator.StringToHash("standing_up_from_belly"));
             yield return new WaitForSecondsRealtime(1.5f);
-            cap.enabled = true;
+            //cap.enabled = true;
             movementAllowed = true;
         }
         falling = false;
@@ -258,7 +347,7 @@ public class JoystickController : MonoBehaviour {
 
     IEnumerator Jumper()
     {
-        PlayerAnimator.applyRootMotion = false;
+        
         PlayerAnimator.Play(Animator.StringToHash("Jump"));
         if(moving)
             GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, jumpHeight, 0.0f);
@@ -268,7 +357,6 @@ public class JoystickController : MonoBehaviour {
         PlayerAnimator.SetBool("Grounded", false);
         yield return new WaitForSecondsRealtime(1.0f);
         yield return new WaitUntil(() => grounded == true);
-        PlayerAnimator.applyRootMotion = true;
     }
 
     IEnumerator HitReact()
@@ -313,12 +401,17 @@ public class JoystickController : MonoBehaviour {
         {
             GetComponent<Rigidbody>().drag = 4.0f;
             GetComponent<Rigidbody>().AddForce(Vector3.down * 10);
+            StopCoroutine(Falling());
             climbingStairs = true;
             grounded = true;
         }
         
         if ((collision.gameObject.layer == 9)||(collision.gameObject.tag == "Ground"))
+        {
+            StopCoroutine(Falling());
             grounded = true;
+        }
+            
 
         if(collision.gameObject.tag == "EnemyWeapon" && !reacting)
         {
@@ -337,12 +430,16 @@ public class JoystickController : MonoBehaviour {
         {
             GetComponent<Rigidbody>().drag = 4.0f;
             GetComponent<Rigidbody>().AddForce(Vector3.down * 10);
+            StopCoroutine(Falling());
             climbingStairs = true;
             grounded = true;
         }
 
         if ((collision.gameObject.layer == 9) || (collision.gameObject.tag == "Ground"))
+        {
+            StopCoroutine(Falling());
             grounded = true;
+        }
     }
 
     void OnCollisionExit(Collision collision)
@@ -353,8 +450,11 @@ public class JoystickController : MonoBehaviour {
             climbingStairs = false;
         }
 
-        if (collision.gameObject.layer == 9 && !climbingStairs)
+        if (collision.gameObject.layer == 9 && !climbingStairs && GetComponent<Rigidbody>().velocity.y < -3)
+        {
             grounded = false;
+        }
+            
     }
 
 }

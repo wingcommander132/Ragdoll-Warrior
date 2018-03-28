@@ -38,6 +38,8 @@ TagManager:
   - Ground
   - EnemyWeapon
   - Killer
+  - Wings
+  - WeaponsPanel
   layers:
   - Default
   - TransparentFX
@@ -53,9 +55,9 @@ TagManager:
   - Enemy
   - EnemyEXT
   - EnemyBlocker
-  - 
-  - 
-  - 
+  - PlayerWeapons
+  - PlayerBody
+  - PlayerBullet
   - 
   - 
   - 

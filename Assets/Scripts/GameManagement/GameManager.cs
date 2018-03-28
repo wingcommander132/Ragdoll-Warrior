@@ -8,7 +8,7 @@ namespace RWGameManager
 {
     public class GameManager : MonoBehaviour {
         public int score = 0;
-        public int round = 1;
+        public int round = 0;
         private EnemySpawner enSpawner;
         private Text roundtext;
         private Text scoreText;
@@ -39,8 +39,7 @@ namespace RWGameManager
             {
 
             }
-            roundtext.text = round.ToString();
-            scoreText.text = score.ToString();
+            
         }
 
         void FixedUpdate()
@@ -50,16 +49,14 @@ namespace RWGameManager
                 _highScore = score;
                 PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_highScore",_highScore);
             }
-               
-
-            
-
-
 
             if(Input.GetKey(KeyCode.Escape))
             {
                 PauseGame();
             }
+
+            roundtext.text = round.ToString();
+            scoreText.text = score.ToString();
         }
 
         public void ToMenu()
@@ -72,16 +69,6 @@ namespace RWGameManager
             if (!paused)
             {
                 paused = true;
-                /*
-                GameObject[] ensps = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject obj in ensps)
-                {
-                    if (obj.GetComponent<EnemySpawner>())
-                    {
-                        EnemyController ensp = obj.GetComponent<EnemyController>();
-                        ensp.GamePaused(true);
-                    }
-                }*/
                 pauseUI.SetActive(true);
                 playerJoystickController.SetActive(false);
                 playerUI.SetActive(false);

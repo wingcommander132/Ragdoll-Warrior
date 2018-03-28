@@ -265,8 +265,8 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/chris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/chris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -471,6 +471,8 @@
     <Compile Include="Assets\Plugins\RootMotion\Shared Scripts\Warning.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FireWing\Shader\Wing_Main.shader" />
+    <None Include="Assets\FireWing\Shader\Wing_Sub.shader" />
     <None Include="Assets\Imported Assets\LazyFog\Instructions.txt" />
     <None Include="Assets\Imported Assets\LazyFog\Shaders\LazyFog.shader" />
     <None Include="Assets\Imported Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />

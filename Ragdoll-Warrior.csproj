@@ -265,8 +265,8 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/chris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/chris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -344,12 +344,17 @@
     <Compile Include="Assets\Prefabs\Enemy\Scripts\LifeWarning.cs" />
     <Compile Include="Assets\Scripts\GameManagement\CameraPusher.cs" />
     <Compile Include="Assets\Scripts\GameManagement\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManagement\GameLoad.cs" />
     <Compile Include="Assets\Scripts\GameManagement\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player\ArmMover.cs" />
     <Compile Include="Assets\Scripts\Player\JoystickController.cs" />
+    <Compile Include="Assets\Scripts\Player\Pistol.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Player\SMG.cs" />
     <Compile Include="Assets\Scripts\Player\Sword.cs" />
     <Compile Include="Assets\Scripts\Player\SwordTracker.cs" />
+    <Compile Include="Assets\Simple Vector Icons\Sample\IconPreview.cs" />
     <Compile Include="Assets\TouchJoysticks\Scripts\DualJoystickPlayerController.cs" />
     <Compile Include="Assets\TouchJoysticks\Scripts\DualJoystickTouchContoller.cs" />
     <Compile Include="Assets\TouchJoysticks\Scripts\LeftJoystick.cs" />
@@ -363,6 +368,8 @@
     <Compile Include="Assets\TouchJoysticks\Scripts\SingleJoystickTouchController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FireWing\Shader\Wing_Main.shader" />
+    <None Include="Assets\FireWing\Shader\Wing_Sub.shader" />
     <None Include="Assets\Imported Assets\LazyFog\Instructions.txt" />
     <None Include="Assets\Imported Assets\LazyFog\Shaders\LazyFog.shader" />
     <None Include="Assets\Imported Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />

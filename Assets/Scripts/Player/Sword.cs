@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour {
     private GameObject activeLoc;
     private GameObject player;
+    public int weaponIndex = 0;
     public float baseDamage = 10.0f;
     private bool isHit = false;
     private Collider swordcol;
