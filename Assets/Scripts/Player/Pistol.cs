@@ -5,17 +5,24 @@ using UnityEngine;
 public class Pistol : MonoBehaviour {
     private GameObject activeLoc;
     private GameObject player;
-    public int weaponIndex = 2;
+    public int weaponIndex = 1;
     public float baseDamage = 10.0f;
+    public GameObject bulletSpawn;
+    public GameObject bulletPrefab;
+    private JoystickController joycon;
+    public int fireRate = 1;
+    public GameObject muzzleFlash;
+    public bool equiped = false;
     //private ParticleSystem particles;
     // Use this for initialization
     void Start()
     {
-        if (activeLoc == null)
-            activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        player = GameObject.Find("Player");
+        joycon = player.GetComponent<JoystickController>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        //particles = GetComponentInChildren<ParticleSystem>();
+        if (joycon.weapon == this.gameObject)
+            StartCoroutine(TestFire());
     }
 
     // Update is called once per frame
@@ -24,25 +31,41 @@ public class Pistol : MonoBehaviour {
 
     }
 
-    IEnumerator WaitAfterHit(float time)
+    void FixedUpdate()
     {
-        float scale = Time.timeScale;
-        Time.timeScale = 0.6f;
-        Handheld.Vibrate();
-        yield return new WaitForSecondsRealtime(1.0f);
-        Time.timeScale = scale;
-        //swordcol.enabled = true;
-        //isHit = player.GetComponent<JoystickController>().hit = false;
+        bulletSpawn.transform.LookAt(GameObject.FindGameObjectWithTag("ArmMover").transform.position, new Vector3(0, 0, 1));
     }
 
-    void OnCollisionExit(Collision colis)
-    {/*
-        GameObject en = colis.gameObject;
-        if (en.tag == "Enemy")
+    private void OnEnable()
+    {
+        if (activeLoc == null)
+            activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+
+        StartCoroutine(TestFire());
+    }
+
+    IEnumerator TestFire()
+    {
+        int shotCount = 0;
+        while (shotCount != fireRate)
         {
-            swordcol.enabled = true;
-            EnemyController enemy = en.GetComponent<EnemyController>();
-            isHit = player.GetComponent<JoystickController>().hit = false;
-        }*/
+            Fire();
+            yield return new WaitForSecondsRealtime(1.0f / fireRate);
+            shotCount++;
+        }
+        yield return StartCoroutine(TestFire());
+    }
+
+    IEnumerator muzFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.SetActive(false);
+    }
+
+    void Fire()
+    {
+        StartCoroutine(muzFlash());
+        GameObject bull = Instantiate(bulletPrefab);
     }
 }

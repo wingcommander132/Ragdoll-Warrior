@@ -5,10 +5,12 @@ Assets/Scenes/LoadingScreen.unity
 Assets/Scenes/World1.unity
 SceneListEnd?
 78a28a48c2ded27a3fedcad1f807ebf3 Assembly-CSharp.dll:.LogoCinematic
+13f658ffe4a9d4035bd9a51a340c299d Assembly-CSharp.dll:.WFX_Demo
 3d60e246454049ba81f989ffb7d60222 Assembly-CSharp-firstpass.dll:RootMotion.Demos.AnimatorController3rdPersonIK
+e1048fb987503d69b1e1255ccf72e1f2 Assembly-CSharp.dll:.CFX_Demo_Translate
 929a879ab42ac65f4c44621541273283 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.LimbIK
 6b5f5a09155862131b08045d591b7d2d Assembly-CSharp-firstpass.dll:RootMotion.Demos.PickUpBox
-744f06b2d6d03de147b258a4d55d9ae9 Assembly-CSharp.dll:.EnemyController
+7d58c574adcd0ec744428fe1e6a8ab7f Assembly-CSharp.dll:.EnemyController
 62adde5edc57d4719b2f47955f56c8dc Assembly-CSharp-firstpass.dll:RootMotion.Demos.PendulumExample
 36ee3526f763c05e3814e1dd891e2772 Assembly-CSharp-firstpass.dll:RootMotion.Demos.CharacterAnimationSimple
 2493304bac448739d50f708564415122 Assembly-CSharp.dll:.GeneralBasics2d
@@ -28,13 +30,14 @@ e574b6d31ae5ad16f8b79cfbebb39d1f Assembly-CSharp-firstpass.dll:RootMotion.FinalI
 27097c6263cd4e56e46fda8eed1ed7de Assembly-CSharp-firstpass.dll:RootMotion.Demos.FBIKHandsOnProp
 d0b7566def8403402899668a3a9371a1 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.GrounderVRIK
 1feca1e8a7544231e3f5875e2f2c066d Assembly-CSharp.dll:DentedPixel.LTExamples.TestingUnitTests
-c75ffb1db05422f48ddb82b77426c2df Assembly-CSharp.dll:.Sword
+37b774ced10efbf5034b1b3f17e508ae Assembly-CSharp.dll:.Sword
 0ac864eb294c90a8f5fd7d0f8924a218 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.HandPoser
 445f780139ebf5524f55eda007c74b5b Assembly-CSharp.dll:.PathBezier2d
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MobileRuntimeSetup
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:RootMotion.Demos.SoccerDemo
 76e06ba249210c5086ddfccdba52b57c Assembly-CSharp.dll:.IconPreview
 153887456e1e00f991f8edf9ce22151d Assembly-CSharp.dll:.LeftJoystick
-52bcd32f6eff5e9afa965aa683314a00 Assembly-CSharp.dll:RWGameManager.GameManager
+319d68bdb59f7185b253da881e6b461d Assembly-CSharp.dll:RWGameManager.GameManager
 445f780139ebf5524f55eda007c74b5b Assembly-CSharp.dll:.PathSpline2d
 e7cad0cd38cfd23c44199eb8c87a6385 Assembly-CSharp-firstpass.dll:RootMotion.Comments
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EnemyAttackControll
@@ -116,6 +119,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TestingColorTweening
 3fc5e2248049ec4184251b85043f5154 Assembly-CSharp.dll:.GeneralSimpleUI
 1eac61cc26532ebb9e1a84e0143bc4aa Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.RotationLimitHinge
+0c337b1446c6d6ea1bfef39bddf3e1a2 Assembly-CSharp.dll:.WFX_Demo_New
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -128,7 +132,9 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+7a0f48fb129e472af6552a847bfd13a8 Assembly-CSharp.dll:.WFX_Demo_DeleteAfterDelay
 0cf64cc5c8c2e17b6fc67081f867e079 Assembly-CSharp.dll:.GeneralEasingTypes
+3f7b40b9dec82f7b3bef20c7dbdfcb1c Assembly-CSharp.dll:.CFX_AutoStopLoopedEffect
 6d48850b52fc85e584b6e33457eb924a Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.VRIK
 f43097df71fc81e44712a5fa7ad70da5 Assembly-CSharp-firstpass.dll:RootMotion.Demos.TouchWalls
 ec31f97efa80fc53cdded3157d7a3a08 Assembly-CSharp-firstpass.dll:RootMotion.Demos.UserControlAI
@@ -154,6 +160,7 @@ a0b22e1ff2daafe87ce4a9baa41bcedf Assembly-CSharp.dll:.RightJoystickPlayerControl
 2c1c7b48aea3de649a09cdba8f198e84 Assembly-CSharp.dll:.PathSplineEndless
 ff2629f91a8e34f209aa735f6395b0c0 Assembly-CSharp.dll:.GeneralBasic
 f7532abe97fba1abcf239bd275e1aeb9 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FBBIKHeadEffector
+45a13a011c4503a2da26822debcc3d93 Assembly-CSharp.dll:.Pistol
 ad6c3e6efc5eeb0aef0776b0e40056bd Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.InteractionObject
 81b03e1f12441b75b4983ec4785ac7f0 Assembly-CSharp.dll:.GeneralAdvancedTechniques
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
@@ -178,11 +185,13 @@ ddf3ed1818767f21a26a3cd357d58d75 Assembly-CSharp-firstpass.dll:RootMotion.Demos.
 6db47c0f3365f761fd1a151b6ae9ab36 Assembly-CSharp.dll:.LeftJoystickTouchContoller
 60a8366e5209329db9f475e611589656 Assembly-CSharp-firstpass.dll:RootMotion.Demos.MechSpiderController
 e0f114f2f14156401d16d6c811816bbb Assembly-CSharp.dll:.LeftJoystickPlayerController
+cf034d56006fab83d80d3d2c8d2b4a6b Assembly-CSharp.dll:.CFX_Demo_RandomDir
 ee03407f5f75012ad5841537d8f9f344 Assembly-CSharp.dll:.TestingSequencer
 5d9727a45521f23f1adc8419cdddaa63 Assembly-CSharp-firstpass.dll:RootMotion.Demos.VRIKPlatform
 7a0d19d55da54b71f42e2c5fb65463b6 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.VRIKRootController
 ef0629f9d7ea76a037a93f6e36ab93b1 Assembly-CSharp-firstpass.dll:RootMotion.Demos.SimpleLocomotion
 0e00834a5b690bac01c62aaca28ce67c Assembly-CSharp.dll:.SingleJoystickTouchController
+ab33636d6ab69a357f553ed12c5ccacc Assembly-CSharp.dll:.CFX_Demo_RotateCamera
 e2755ccd17ac381a5cd2cf83ef319e93 Assembly-CSharp-firstpass.dll:RootMotion.Demos.FBBIKSettings
 153887456e1e00f991f8edf9ce22151d Assembly-CSharp.dll:.RightJoystick
 3c8ff3c9672790297916a84d3c9507cd Assembly-CSharp-firstpass.dll:RootMotion.SolverManager
@@ -194,13 +203,17 @@ f74824a20b3e478423885e0d7e1baf61 Assembly-CSharp-firstpass.dll:RootMotion.FinalI
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 a9df12d462907fd072f133fdbe25135e Assembly-CSharp-firstpass.dll:RootMotion.Demos.ExplosionDemo
+8604de0f5beed95d79a3f24818973b37 Assembly-CSharp.dll:.CFX_AutoDestructShuriken
 b7e1ffda830e958a6d6758546fdf7aa6 Assembly-CSharp-firstpass.dll:RootMotion.Demos.CharacterThirdPerson
 7896a82ec639d8405130f92faa5b5c91 Assembly-CSharp-firstpass.dll:RootMotion.Demos.MechSpiderParticles
+cf034d56006fab83d80d3d2c8d2b4a6b Assembly-CSharp.dll:.WFX_Demo_RandomDir
 a83478108b8f08f75b130741a94c2768 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.BodyTilt
 f1d448b52d4d52f3812b9ceeaa39a668 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.HitReaction
 0367d1b774b8042e456922926e22df58 Assembly-CSharp.dll:.SingleJoystickPlayerController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Bullet
 baaddee0117ace0de0a577a4157ac626 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.RotationLimitAngle
 a74445ae678117ee298b8d2dea4e99fc Assembly-CSharp-firstpass.dll:RootMotion.Demos.FPSAiming
+31cf01fa5cdbe5572a95e3db8487bdc6 Assembly-CSharp.dll:.CFX_LightIntensityFade
 d611feb1d788a706efbdd00d345598ee Assembly-CSharp.dll:.RightJoystickTouchContoller
 c6bffb50cb15c3d9d066e6ea095e51e3 Assembly-CSharp.dll:.Testing240
 7d40c66b82c04acf8140f883d20e876e Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.InteractionTrigger
@@ -209,6 +222,7 @@ c6bffb50cb15c3d9d066e6ea095e51e3 Assembly-CSharp.dll:.Testing240
 320b1dea36882b7d48cabbc3cacb8ac2 Assembly-CSharp.dll:.TestingSceneSwitching
 34f2f83e9672bb68ede8cd3781a47b3d Assembly-CSharp.dll:.PathSplineTrack
 e6e811d0140c79c428745c60c6a7f10f Assembly-CSharp.dll:.Testing243
+e15a7759611205127ceb50292b06b048 Assembly-CSharp.dll:.Pickup
 6edd392c314cd772c5d91102df13d4d7 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FABRIKRoot
 79fbaa8732f73f87b60a6c88fe0d7211 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FingerRig
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SwordTracker
@@ -260,9 +274,10 @@ f56038048804eb5a59f9f36ace22a8d4 Assembly-CSharp.dll:.EnemySight
 06774e93a4668c309837ae77258206fa Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FABRIK
 a0811108e70d2b55af8d878f58db03bf Assembly-CSharp-firstpass.dll:RootMotion.Demos.UserControlInteractions
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenu
-a551a94f91952802d9266bfc2338eb17 Assembly-CSharp.dll:.JoystickController
+786a6635eff00331dd936acc27c74b10 Assembly-CSharp.dll:.JoystickController
 6f4f2ed2e544c8570d2080d1962ee934 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.BipedIK
 693b896d2e0cecfc57d196fd98284c68 Assembly-CSharp-firstpass.dll:RootMotion.Demos.TwoHandedProp
+d5be1ca94278aa7358c511834dede500 Assembly-CSharp.dll:.WFX_LightFlicker
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -273,11 +288,14 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 212c18f3ba44879244a1fa3236708665 Assembly-CSharp-firstpass.dll:RootMotion.Demos.RagdollUtilityDemo
 f49f4863272689244b774579270d34da Assembly-CSharp.dll:.TestingIssue2
+45a13a011c4503a2da26822debcc3d93 Assembly-CSharp.dll:.SMG
 394147ff195ba5c94cd7778cded5ba7e Assembly-CSharp-firstpass.dll:RootMotion.Demos.FPSCharacter
 9032ed7ba8d6558bce53b9a704e1cd45 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.InteractionSystem
 046a0f7c17b519f7e197d2ff4d7dc396 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.OffsetPose
-f2d894c54f075d99fb2e7bad8579d65d Assembly-CSharp.dll:.ArmMover
+472439e675a25d2427594b71b847c84c Assembly-CSharp.dll:.ArmMover
 6462129014261f03fe96775d385612e5 Assembly-CSharp-firstpass.dll:RootMotion.Demos.CharacterAnimationThirdPerson
+86c7f57ce2c5ffd0983373a67557d9b4 Assembly-CSharp.dll:.WFX_Demo_Wall
+16b3214f475afa883c226fbc2e866962 Assembly-CSharp.dll:.WFX_BulletHoleDecal
 46e78e5af7b158431030d6aaa46c6a54 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FBBIKArmBending
 4f2be6b848b740a10a0f7bfc77f30a74 Assembly-CSharp-firstpass.dll:RootMotion.Demos.TransferMotion
 4b59c46de95dbdf26d98895822ebd0a2 Assembly-CSharp-firstpass.dll:RootMotion.Demos.AimSwing
@@ -294,6 +312,7 @@ b15ef36ef52f0c30a3fd83255742fc50 Assembly-CSharp-firstpass.dll:RootMotion.FinalI
 7a6ef3009b00b550418d6773129ccf0c Assembly-CSharp-firstpass.dll:RootMotion.Demos.VRIKCalibrationController
 1ea0c28c827862689dcc0bc0416f80c7 Assembly-CSharp.dll:.PathSplines
 d01fba27b3d890a4c98aedfdd86bcac4 Assembly-CSharp-firstpass.dll:RootMotion.Demos.RecoilTest
+d670fbda86e987bf6a27e1656d63989d Assembly-CSharp.dll:.CFX_SpawnSystem
 b4bd1a2169092ca325406b98fe5a325d Assembly-CSharp.dll:.TestingRotate
 6109f0847712adbfbd89c82a2c532560 Assembly-CSharp.dll:.GeneralUISpace
 e484fd75bb762f2edf1720fb4d6479bb Assembly-CSharp-firstpass.dll:RootMotion.Demos.EffectorOffset

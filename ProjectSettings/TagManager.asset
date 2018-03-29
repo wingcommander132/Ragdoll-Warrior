@@ -40,6 +40,9 @@ TagManager:
   - Killer
   - Wings
   - WeaponsPanel
+  - FxTemporaire
+  - PlayerBullet
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -58,7 +61,7 @@ TagManager:
   - PlayerWeapons
   - PlayerBody
   - PlayerBullet
-  - 
+  - Pickup
   - 
   - 
   - 

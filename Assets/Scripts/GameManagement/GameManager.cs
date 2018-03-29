@@ -19,6 +19,7 @@ namespace RWGameManager
         public int _highScore;
         private GameObject playerUI;
         private float IntTimeScale;
+        public GameObject[] playerPickups;
         
         // Use this for initialization
         void Start () {

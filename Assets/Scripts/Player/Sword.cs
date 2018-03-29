@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour {
     private GameObject activeLoc;
-    private GameObject player;
+    public GameObject player;
     public int weaponIndex = 0;
     public float baseDamage = 10.0f;
     private bool isHit = false;
     private Collider swordcol;
     private ParticleSystem particles;
+    public bool equiped = false;
     // Use this for initialization
     void Start() {
-        if(activeLoc == null)
-            activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         particles = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update() {
-
+        this.transform.position = activeLoc.transform.position;
     }
 
     void OnCollisionEnter(Collision colis)
@@ -32,10 +32,10 @@ public class Sword : MonoBehaviour {
         {
             if (!isHit)
             {
-                (swordcol = GetComponent<MeshCollider>()).enabled = false;
+                swordcol = GetComponent<MeshCollider>();
+                swordcol.enabled = false;
                 EnemyController enemy = en.GetComponent<EnemyController>();
                 ContactPoint point = colis.contacts[0];
-                player.GetComponent<JoystickController>().ReturnWepSpeed();
 
                 if (!isHit)
                     enemy.Damage(baseDamage, point, colis);
@@ -74,6 +74,11 @@ public class Sword : MonoBehaviour {
             }   
             
         }
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     IEnumerator WaitAfterHit(float time)

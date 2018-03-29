@@ -17,7 +17,7 @@ public class JoystickController : MonoBehaviour {
     public float forcedZPos;
     public float jumpHeight;
     public float jumpDistance;
-    private GameObject weapon;
+    public GameObject weapon;
     private bool wepactive = true;
     private Sword wep;
     private Vector3 playerRot;
@@ -48,18 +48,20 @@ public class JoystickController : MonoBehaviour {
     public GameObject[] weapons;
     public int maxWeapons = 5;
     private GameObject wepPanel;
+    private GameManager gmanager;
     private Button[] wepbuts;
+    public GameObject[] equipedWeps;
+    public RectTransform healthBar;
     // Use this for initialization
     void Start () {
+        healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
+        gmanager = GetComponent<GameManager>();
         maxHealth = health;
         playerAnimsCont = GetComponent<Animation>();
         playerCol = GetComponent<CapsuleCollider>();
         PlayerAnimator = GetComponent<Animator>();
         weppos = GameObject.FindGameObjectWithTag("WepActiveLoc");
         wepPanel = GameObject.FindGameObjectWithTag("WeaponsPanel");
-        //GameObject wepGO = GameObject.FindGameObjectWithTag("PlayerWeapon");
-        //wep = wepGO.GetComponent<Sword>();
-       // weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
         ArmMover = GameObject.FindGameObjectWithTag("ArmMover");
         PHand = ArmMover.GetComponent<ArmMover>().playerHand;
         playerarm = GetComponent<AimIK>();
@@ -70,6 +72,7 @@ public class JoystickController : MonoBehaviour {
         else
             weapons = new GameObject[maxWeapons];
 
+        wepbuts = new Button[wepPanel.GetComponentsInChildren<Button>(true).Length];
         wepbuts = wepPanel.GetComponentsInChildren<Button>(true);
 
         int count = 0;
@@ -79,26 +82,35 @@ public class JoystickController : MonoBehaviour {
             {
                 SMG script = arrItem.GetComponent<SMG>();
                 weapons[script.weaponIndex] = arrItem;
+                if(script.equiped)
+                    wepbuts[script.weaponIndex].gameObject.SetActive(true);
             }
 
             if (arrItem.name == "Sword")
             {
                 Sword script = arrItem.GetComponent<Sword>();
                 weapons[script.weaponIndex] = arrItem;
+                if (script.equiped)
+                    wepbuts[script.weaponIndex].gameObject.SetActive(true);
             }
 
             if (arrItem.name == "Pistol")
             {
                 Pistol script = arrItem.GetComponent<Pistol>();
                 weapons[script.weaponIndex] = arrItem;
+                if (script.equiped)
+                    wepbuts[script.weaponIndex].gameObject.SetActive(true);
             }
 
-            wepbuts[count].gameObject.SetActive(true);
+            
             arrItem.SetActive(false);
             count++;
         }
-        
-        weapon = weapons[currentWeaponIndex];
+
+        if (weapons[currentWeaponIndex] != null)
+            weapon = weapons[currentWeaponIndex];
+        else
+            weapon = weapons[0];
 
     }
 	
@@ -143,8 +155,9 @@ public class JoystickController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        healthBar.localScale = new Vector3(((float)health / (float)maxHealth),1,1);
+
         playerRot = new Vector3 (transform.rotation.x, transform.rotation.y, transform.rotation.z);
-       
         PlayerAnimator.SetBool("Grounded", grounded);
 
         leftJoystickInput =  leftJoystick.GetInputDirection();
@@ -289,8 +302,7 @@ public class JoystickController : MonoBehaviour {
         {
             wep.SetActive(false);
         }
-
-        weapons[wepIndex].SetActive(true);
+        
         weapon = weapons[wepIndex];
     }
 
@@ -320,8 +332,6 @@ public class JoystickController : MonoBehaviour {
 
             if (!grounded)
                 numNotG++;
-
-            print(numNotG);
         }
 
         if (numNotG == 19)
@@ -332,14 +342,11 @@ public class JoystickController : MonoBehaviour {
         if (falling)
         {
             movementAllowed = false;
-            //CapsuleCollider cap = GetComponent<CapsuleCollider>();
-            //cap.enabled = false;
             PlayerAnimator.enabled = false;
             yield return new WaitUntil(() => grounded == true);
             PlayerAnimator.enabled = true;
             PlayerAnimator.Play(Animator.StringToHash("standing_up_from_belly"));
             yield return new WaitForSecondsRealtime(1.5f);
-            //cap.enabled = true;
             movementAllowed = true;
         }
         falling = false;
@@ -393,6 +400,26 @@ public class JoystickController : MonoBehaviour {
         yield return new WaitForSecondsRealtime(4.0f);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().reload_scene();
     }
+
+    void Equip(int type,string obj)
+    {
+        if(type == 1)
+        {
+            int c = 0;
+            foreach (GameObject wep in weapons)
+            {
+                if (wep.name == obj)
+                {
+                    wepbuts[c].gameObject.SetActive(true);
+                    WepChange(c);
+                }
+
+                c++;
+                
+            }
+        }
+        
+    }
     
 
     void OnCollisionEnter(Collision collision)
@@ -421,6 +448,16 @@ public class JoystickController : MonoBehaviour {
         if (collision.gameObject.tag == "Killer")
         {
             StartCoroutine(Die());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Pickup")
+        {
+            Pickup item = other.gameObject.GetComponent<Pickup>();
+            Equip(item.itemType, item.itemName);
+            other.gameObject.GetComponent<Pickup>().itemCollected();
         }
     }
 

@@ -12,15 +12,14 @@ public class EnemyController : MonoBehaviour {
     public GameObject target = null;
     private bool enemySpotted = false;
     private bool enemyAttackable = false;
-    public int maxhealth = 2;
+    public int maxhealth = 5;
     //public GameManager gameManager;
     private bool reacting = false;
     public int lookdirect = 0;
     private bool attacking = false;
     private GameObject lowwarning;
     public bool recovering = false;
-    public GameObject parent;
-    private int hitsTaken = 0;
+    public int hitsTaken = 0;
     private Vector3 takenColis = Vector3.zero;
     private Collider PlayerBlocker;
     public string blockAnimationString;
@@ -61,7 +60,6 @@ public class EnemyController : MonoBehaviour {
                 {
                     animator.SetFloat("Y", 1.6f, 0.2f, Time.deltaTime);
                     attacking = false;
-                    StopCoroutine(Attack());
                 }
                                
             }
@@ -72,27 +70,12 @@ public class EnemyController : MonoBehaviour {
         
     }
 
-    public void GamePaused(bool pause)
-    {
-        if(pause)
-        {
-            reacting = true;
-            animator.enabled = false;
-        }
-        else
-        {
-            reacting = false;
-            animator.enabled = true;
-            animator.Play("GetUp");
-        }
-    }
-
     void OnCollisionEnter(Collision cols)
     {
-        if(cols.gameObject.tag == "Killer")
-        {
-            StartCoroutine(Finisher());
-        }
+        //if(cols.gameObject.tag == "Killer")
+        //{
+        //    StartCoroutine(Finisher());
+        //}
     }
 
     public IEnumerator Recover()
@@ -118,7 +101,7 @@ public class EnemyController : MonoBehaviour {
 
         animator.Play(Animator.StringToHash(attackAnimationStrings[Random.Range(0, attackAnimationStrings.Length - 1)]));
         float wait = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSecondsRealtime(3.0f);
+        yield return new WaitForSecondsRealtime(5.0f);
         transform.LookAt(new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z));
 
         attacking = false;
@@ -144,43 +127,31 @@ public class EnemyController : MonoBehaviour {
 
     public void Damage(float dmg, ContactPoint point, Collision force = null, float swordspeed = 1)
     {
-        hitsTaken++;
-        if(hitsTaken >= maxhealth)
-        {
-            GetComponent<Collider>().enabled = false;
-            EnemySpawner enspawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
-            StartCoroutine(Finisher());
-            return;
-        }
-
-        Rigidbody rb = default(Rigidbody);
-        Rigidbody[] rbs = GetComponentsInChildren<Rigidbody>();
-        int cnt = 0;
-        foreach (Rigidbody ridg in rbs)
-        {
-            cnt++;
-            if (ridg.tag == "EnemyPelvis")
-                rb = ridg;
-        }
-
-        takenColis = rb.velocity;
-
-        float stutter = force.relativeVelocity.magnitude - takenColis.magnitude;
         if (!reacting)
         {
+            reacting = true;
+            hitsTaken++;
+
+            if(hitsTaken >= maxhealth)
+            {
+                GetComponent<Collider>().enabled = false;
+                EnemySpawner enspawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawner>();
+                StartCoroutine(Finisher());
+                return;
+            }
+
              StartCoroutine(takeHit());
         }
-            
-
     }
 
     IEnumerator takeHit()
     {
-        GetComponent<Collider>().enabled = false;
+        Collider col = GetComponent<Collider>();
+        col.enabled = false;
         reacting = true;
         animator.Play(Animator.StringToHash(secondaryAnimationStrings[Random.Range(0,secondaryAnimationStrings.Length-1)]));
-        yield return new WaitForSecondsRealtime(0.5f);
-        GetComponent<Collider>().enabled = true;
+        yield return new WaitForSecondsRealtime(1.0f);
+        col.enabled = true;
         reacting = false;
     }
 

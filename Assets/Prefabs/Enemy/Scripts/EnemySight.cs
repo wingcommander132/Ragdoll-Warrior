@@ -57,6 +57,11 @@ public class EnemySight : MonoBehaviour {
             StartCoroutine(PlayerSearch());
         }
     }
+
+    void TurnCompleted()
+    {
+        turndone = true;
+    }
     
     IEnumerator PlayerSearch()
     {
@@ -81,9 +86,9 @@ public class EnemySight : MonoBehaviour {
             
         }
 
-        LeanTween.rotate(parent, goalRot, 2.0f).setEase(LeanTweenType.easeInOutQuad);
-        
-        yield return new WaitUntil(() => transform.rotation.eulerAngles == goalRot);
+        LTDescr lean = LeanTween.rotate(parent, goalRot, 2.0f);
+        lean.setOnComplete(TurnCompleted);
+        yield return new WaitUntil(() => turndone == true);
 
         mainScript.animator.SetFloat("X", 0, 0.04f, Time.deltaTime);
 

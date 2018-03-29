@@ -10,28 +10,31 @@ public class SMG : MonoBehaviour {
     public float baseDamage = 10.0f;
     public GameObject bulletSpawn;
     public GameObject bulletPrefab;
+    private JoystickController joycon;
+    public int fireRate = 5;
+    public GameObject muzzleFlash;
+    public bool equiped = false;
     //private ParticleSystem particles;
     // Use this for initialization
     void Start()
     {
-        if (activeLoc == null)
-            activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        player = GameObject.Find("Player");
+        joycon = player.GetComponent<JoystickController>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        //particles = GetComponentInChildren<ParticleSystem>();
-
-        StartCoroutine(TestFire());
+        if(joycon.weapon == this.gameObject)
+            StartCoroutine(TestFire());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void FixedUpdate()
     {
-        
+        bulletSpawn.transform.LookAt(GameObject.FindGameObjectWithTag("ArmMover").transform.position,new Vector3(0,0,1));
     }
 
     private void OnEnable()
@@ -39,51 +42,31 @@ public class SMG : MonoBehaviour {
         if (activeLoc == null)
             activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        //particles = GetComponentInChildren<ParticleSystem>();
-
         StartCoroutine(TestFire());
     }
 
     IEnumerator TestFire()
     {
-        print("fire");
-        Fire();
-        yield return new WaitForSecondsRealtime(1.0f);
+        int shotCount = 0;
+        while(shotCount != fireRate)
+        {
+            Fire();
+            yield return new WaitForSecondsRealtime(1.0f/fireRate);
+            shotCount++;
+        }
         yield return StartCoroutine(TestFire());
+    }
+
+    IEnumerator muzFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlash.SetActive(false);
     }
 
     void Fire()
     {
-        //Transform bulltransform = transform;
-        //bulltransform.rotation = new Quaternion(0.0f, 0.0f, bulltransform.rotation.z,0.0f);
-        GameObject bull = Instantiate(bulletPrefab,bulletSpawn.transform);
-        bull.transform.parent.DetachChildren();
-        bull.transform.position = bulletSpawn.transform.position;
-        bull.transform.rotation = bulletSpawn.transform.rotation;
-        //bull.transform.position = new Vector3(bull.transform.position.x, bull.transform.position.y, 0.0f);
-        bull.GetComponent<Rigidbody>().velocity = new Vector3(50, 0, 0);
-    }
-
-    IEnumerator WaitAfterHit(float time)
-    {
-        float scale = Time.timeScale;
-        Time.timeScale = 0.6f;
-        Handheld.Vibrate();
-        yield return new WaitForSecondsRealtime(1.0f);
-        Time.timeScale = scale;
-        //swordcol.enabled = true;
-        //isHit = player.GetComponent<JoystickController>().hit = false;
-    }
-
-    void OnCollisionExit(Collision colis)
-    {/*
-        GameObject en = colis.gameObject;
-        if (en.tag == "Enemy")
-        {
-            swordcol.enabled = true;
-            EnemyController enemy = en.GetComponent<EnemyController>();
-            isHit = player.GetComponent<JoystickController>().hit = false;
-        }*/
+        StartCoroutine(muzFlash());
+        GameObject bull = Instantiate(bulletPrefab);
     }
 }
