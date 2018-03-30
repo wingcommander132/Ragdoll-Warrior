@@ -49,6 +49,7 @@ namespace RWGameManager
             {
                 _highScore = score;
                 PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_highScore",_highScore);
+                PlayerPrefs.Save();
             }
 
             if(Input.GetKey(KeyCode.Escape))

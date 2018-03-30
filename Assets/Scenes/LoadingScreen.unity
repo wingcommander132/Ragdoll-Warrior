@@ -494,7 +494,19 @@ MonoBehaviour:
   imageRotation: 1
   imagePulse: 1
   loadingTips:
-  - Test Loading Tip
+  - This is a beta build of the game. The bugs are many and alot of content has yet
+    to be implemented or evolved.
+  - Feel free to report any bugs, feedback or suggestions to us through our GitHub
+    page or the Play Store.
+  - Complete as many rounds as you can
+  - The guns are great at some distance, but up close and personal you'll want your
+    sword
+  - There are weapon pick-ups spread around the map
+  - Enemies will spawn infinitely till you die
+  - The button in the TOP RIGHT CORNER will reload the map for you if you get stuck
+    or a glitch occurs
+  - The Left stick controls character movement
+  - The Right stick controls weapons
   levelToLoad: World1
 --- !u!114 &1653541470
 MonoBehaviour:

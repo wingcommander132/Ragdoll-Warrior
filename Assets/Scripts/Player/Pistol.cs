@@ -13,16 +13,12 @@ public class Pistol : MonoBehaviour {
     public int fireRate = 1;
     public GameObject muzzleFlash;
     public bool equiped = false;
+    private AudioSource aud;
     //private ParticleSystem particles;
     // Use this for initialization
     void Start()
     {
-        activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
-        player = GameObject.Find("Player");
-        joycon = player.GetComponent<JoystickController>();
-
-        if (joycon.weapon == this.gameObject)
-            StartCoroutine(TestFire());
+        
     }
 
     // Update is called once per frame
@@ -38,10 +34,14 @@ public class Pistol : MonoBehaviour {
 
     private void OnEnable()
     {
-        if (activeLoc == null)
-            activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        aud = GetComponent<AudioSource>();
 
-        StartCoroutine(TestFire());
+        activeLoc = GameObject.FindGameObjectWithTag("WepActiveLoc");
+        player = GameObject.Find("Player");
+        joycon = player.GetComponent<JoystickController>();
+
+        if (joycon.weapon == this.gameObject)
+            StartCoroutine(TestFire());
     }
 
     IEnumerator TestFire()
@@ -65,6 +65,7 @@ public class Pistol : MonoBehaviour {
 
     void Fire()
     {
+        aud.Play();
         StartCoroutine(muzFlash());
         GameObject bull = Instantiate(bulletPrefab);
     }

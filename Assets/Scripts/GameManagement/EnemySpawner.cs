@@ -42,7 +42,7 @@ namespace RWGameManager
         {
             if (enemysAlive == 0)
             {
-                enemyscurr = new GameObject[5];
+                enemyscurr = new GameObject[20];
                 GetComponent<GameManager>().AddRoundWon();
                 int ensleft = enemiesToSpawn;
                 while (ensleft > 0)
