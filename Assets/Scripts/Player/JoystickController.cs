@@ -165,6 +165,8 @@ public class JoystickController : MonoBehaviour {
 
         if(health <= 0)
         {
+            healthBar.localScale = new Vector3(0,1,1);
+            GameObject.Find("CameraBox").GetComponent<CameraPusher>().enabled = false;
             StartCoroutine(Die());
         }
         
@@ -325,7 +327,7 @@ public class JoystickController : MonoBehaviour {
         falling = true;
         int counter = 0;
         int numNotG = 0;
-        while(counter < 20)
+        while(counter < 16)
         {
             counter++;
             yield return new WaitForSeconds(0.1f);
@@ -334,7 +336,7 @@ public class JoystickController : MonoBehaviour {
                 numNotG++;
         }
 
-        if (numNotG == 19)
+        if (numNotG >= 14)
             falling = true;
         else
             falling = false;

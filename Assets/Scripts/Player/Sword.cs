@@ -44,7 +44,7 @@ public class Sword : MonoBehaviour {
                 GameObject ArmMover = GameObject.FindGameObjectWithTag("ArmMover");
 
                 float swingspd = player.GetComponent<JoystickController>().swingspeed;
-
+                
                 Vector3 BounceEnd = Vector3.zero;
 
                 if (player.GetComponent<JoystickController>().looking == 1)
@@ -83,11 +83,11 @@ public class Sword : MonoBehaviour {
 
     IEnumerator WaitAfterHit(float time)
     {
-        float scale = Time.timeScale;
-        Time.timeScale = 0.6f;
+        //float scale = Time.timeScale;
+        //Time.timeScale = 0.6f;
         Handheld.Vibrate();
         yield return new WaitForSecondsRealtime(1.0f);
-        Time.timeScale = scale;
+        //Time.timeScale = scale;
         swordcol.enabled = true;
         isHit = player.GetComponent<JoystickController>().hit = false;
     }
