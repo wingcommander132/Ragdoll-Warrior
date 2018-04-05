@@ -327,7 +327,7 @@ public class JoystickController : MonoBehaviour {
         falling = true;
         int counter = 0;
         int numNotG = 0;
-        while(counter < 16)
+        while(counter < 14)
         {
             counter++;
             yield return new WaitForSeconds(0.1f);
@@ -336,7 +336,7 @@ public class JoystickController : MonoBehaviour {
                 numNotG++;
         }
 
-        if (numNotG >= 14)
+        if (numNotG >= 12)
             falling = true;
         else
             falling = false;

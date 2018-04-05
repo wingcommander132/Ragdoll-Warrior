@@ -77855,21 +77855,6 @@ Prefab:
       propertyPath: SizeModule.curve.scalar
       value: 0.0000
       objectReference: {fileID: 0}
-    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
-        type: 2}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1.0000
-      objectReference: {fileID: 0}
-    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
-        type: 2}
-      propertyPath: SizeModule.curve.minScalar
-      value: 0.0000
-      objectReference: {fileID: 0}
-    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
-        type: 2}
-      propertyPath: SizeModule.curve.scalar
-      value: 0.0000
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114854164338659886, guid: f072084fae79b2d4b971bd40783fb290, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f072084fae79b2d4b971bd40783fb290, type: 2}
