@@ -43,6 +43,7 @@ TagManager:
   - FxTemporaire
   - PlayerBullet
   - Pickup
+  - GemText
   layers:
   - Default
   - TransparentFX

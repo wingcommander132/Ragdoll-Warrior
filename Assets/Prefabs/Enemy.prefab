@@ -2385,6 +2385,7 @@ MonoBehaviour:
   - ImpactBehind
   - ImpactHead
   wep: {fileID: 1763414089792486}
+  dropItem: {fileID: 1938584616631064, guid: c12b4a790fc3d434688675e6bb9c2832, type: 2}
 --- !u!114 &114542538602161582
 MonoBehaviour:
   m_ObjectHideFlags: 1

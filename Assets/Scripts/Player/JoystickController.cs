@@ -52,10 +52,13 @@ public class JoystickController : MonoBehaviour {
     private Button[] wepbuts;
     public GameObject[] equipedWeps;
     public RectTransform healthBar;
+    public int collectedGems = 0;
+    public bool armored = false;
+    public Material armoredmat;
     // Use this for initialization
     void Start () {
         healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
-        gmanager = GetComponent<GameManager>();
+        gmanager = GameObject.Find("GameManager").GetComponent<GameManager>();
         maxHealth = health;
         playerAnimsCont = GetComponent<Animation>();
         playerCol = GetComponent<CapsuleCollider>();
@@ -327,7 +330,7 @@ public class JoystickController : MonoBehaviour {
         falling = true;
         int counter = 0;
         int numNotG = 0;
-        while(counter < 14)
+        while(counter < 16)
         {
             counter++;
             yield return new WaitForSeconds(0.1f);
@@ -336,7 +339,7 @@ public class JoystickController : MonoBehaviour {
                 numNotG++;
         }
 
-        if (numNotG >= 12)
+        if (numNotG >= 15)
             falling = true;
         else
             falling = false;
@@ -370,13 +373,16 @@ public class JoystickController : MonoBehaviour {
 
     IEnumerator HitReact()
     {
-        reacting = true;
-        PlayerAnimator.Play("Impact");
-        health--;
-        Handheld.Vibrate();
-        float wait = PlayerAnimator.GetCurrentAnimatorClipInfo(0).Length;
-        yield return new WaitForSecondsRealtime(wait);
-        reacting = false;
+        if(!armored)
+        {
+            reacting = true;
+            PlayerAnimator.Play("Impact");
+            health--;
+            Handheld.Vibrate();
+            float wait = PlayerAnimator.GetCurrentAnimatorClipInfo(0).Length;
+            yield return new WaitForSecondsRealtime(wait);
+            reacting = false;
+        }
     }
 
     IEnumerator SpeedandDistance()
@@ -420,9 +426,35 @@ public class JoystickController : MonoBehaviour {
                 
             }
         }
-        
+        else
+        if(type == 2)
+        {
+            collectedGems++;
+            gmanager.GemCollect();
+        }
+        else
+        if (type == 3)
+        {
+            StartCoroutine(ArmorUp());
+        }
+        else
+        if(type == 4)
+        {
+            if(health < maxHealth)
+                health++;
+        }
+
     }
     
+    IEnumerator ArmorUp()
+    {
+        armored = true;
+        Material orig = GetComponentInChildren<SkinnedMeshRenderer>().material;
+        GetComponentInChildren<SkinnedMeshRenderer>().material = armoredmat;
+        yield return new WaitForSecondsRealtime(15.0f);
+        GetComponentInChildren<SkinnedMeshRenderer>().material = orig;
+        armored = false;
+    }
 
     void OnCollisionEnter(Collision collision)
     {

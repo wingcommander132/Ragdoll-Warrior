@@ -45910,7 +45910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Build: v0.20 - Public Beta'
+  m_Text: 'Build: v0.25 - Public Beta'
 --- !u!222 &1394233440
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57351,6 +57351,36 @@ Prefab:
         type: 2}
       propertyPath: SizeModule.curve.scalar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: SizeModule.curve.minScalar
+      value: 0.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: SizeModule.curve.scalar
+      value: 0.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: SizeModule.curve.minScalar
+      value: 0.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
+        type: 2}
+      propertyPath: SizeModule.curve.scalar
+      value: 0.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198368581407040158, guid: f072084fae79b2d4b971bd40783fb290,
         type: 2}

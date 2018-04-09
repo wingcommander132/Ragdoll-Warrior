@@ -10,7 +10,7 @@ SceneListEnd?
 e1048fb987503d69b1e1255ccf72e1f2 Assembly-CSharp.dll:.CFX_Demo_Translate
 929a879ab42ac65f4c44621541273283 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.LimbIK
 6b5f5a09155862131b08045d591b7d2d Assembly-CSharp-firstpass.dll:RootMotion.Demos.PickUpBox
-7d58c574adcd0ec744428fe1e6a8ab7f Assembly-CSharp.dll:.EnemyController
+d083a03d35a1c2f290d487aa4fca5e89 Assembly-CSharp.dll:.EnemyController
 62adde5edc57d4719b2f47955f56c8dc Assembly-CSharp-firstpass.dll:RootMotion.Demos.PendulumExample
 36ee3526f763c05e3814e1dd891e2772 Assembly-CSharp-firstpass.dll:RootMotion.Demos.CharacterAnimationSimple
 2493304bac448739d50f708564415122 Assembly-CSharp.dll:.GeneralBasics2d
@@ -37,7 +37,7 @@ d0b7566def8403402899668a3a9371a1 Assembly-CSharp-firstpass.dll:RootMotion.FinalI
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:RootMotion.Demos.SoccerDemo
 76e06ba249210c5086ddfccdba52b57c Assembly-CSharp.dll:.IconPreview
 153887456e1e00f991f8edf9ce22151d Assembly-CSharp.dll:.LeftJoystick
-319d68bdb59f7185b253da881e6b461d Assembly-CSharp.dll:RWGameManager.GameManager
+f315269e0525e37213414bff17ea1337 Assembly-CSharp.dll:RWGameManager.GameManager
 445f780139ebf5524f55eda007c74b5b Assembly-CSharp.dll:.PathSpline2d
 e7cad0cd38cfd23c44199eb8c87a6385 Assembly-CSharp-firstpass.dll:RootMotion.Comments
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EnemyAttackControll
@@ -274,7 +274,7 @@ f56038048804eb5a59f9f36ace22a8d4 Assembly-CSharp.dll:.EnemySight
 06774e93a4668c309837ae77258206fa Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.FABRIK
 a0811108e70d2b55af8d878f58db03bf Assembly-CSharp-firstpass.dll:RootMotion.Demos.UserControlInteractions
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenu
-786a6635eff00331dd936acc27c74b10 Assembly-CSharp.dll:.JoystickController
+b6e09b7e04ae2339a9688d3cbd96dedc Assembly-CSharp.dll:.JoystickController
 6f4f2ed2e544c8570d2080d1962ee934 Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.BipedIK
 693b896d2e0cecfc57d196fd98284c68 Assembly-CSharp-firstpass.dll:RootMotion.Demos.TwoHandedProp
 d5be1ca94278aa7358c511834dede500 Assembly-CSharp.dll:.WFX_LightFlicker
@@ -330,3 +330,4 @@ bf7087d4ae35e9e724e0500e965575aa Assembly-CSharp-firstpass.dll:RootMotion.Camera
 812d90d4eecee79489301df0bc9c094f Assembly-CSharp-firstpass.dll:RootMotion.Demos.Turret
 ddc58044a9e91c4c316b7cea443f2827 Assembly-CSharp.dll:.DualJoystickTouchContoller
 55a9d4f827d2777e39447c0928a3885b Assembly-CSharp-firstpass.dll:RootMotion.FinalIK.ShoulderRotator
+056fa9a7d44da98d702c4f70678b2d95 Assembly-CSharp.dll:.PickupSpawner

@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour {
     private bool enemySpotted = false;
     private bool enemyAttackable = false;
     public int maxhealth = 5;
-    //public GameManager gameManager;
     private bool reacting = false;
     public int lookdirect = 0;
     private bool attacking = false;
@@ -27,6 +26,7 @@ public class EnemyController : MonoBehaviour {
     public string[] secondaryAnimationStrings;
     public GameObject wep;
     private MeshCollider wepCol;
+    public GameObject dropItem;
     // Use this for initialization
     void Start() {
         animator = GetComponent<Animator>();
@@ -112,6 +112,10 @@ public class EnemyController : MonoBehaviour {
     {
         wep.SetActive(false);
         lowwarning.SetActive(false);
+        Transform Loc = this.transform;
+        GameObject ob = Instantiate(dropItem, Loc, true);
+        ob.transform.parent = null;
+        ob.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, 0.0f);
         animator.enabled = false;
         yield return new WaitForSecondsRealtime(4.0f);
         Die();

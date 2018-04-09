@@ -363,6 +363,7 @@
     <Compile Include="Assets\Scripts\GameManagement\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\GameManagement\GameLoad.cs" />
     <Compile Include="Assets\Scripts\GameManagement\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagement\PickupSpawner.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MobileRuntimeSetup.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />

@@ -11,6 +11,7 @@ namespace RWGameManager
         public int round = 0;
         private EnemySpawner enSpawner;
         private Text roundtext;
+        private Text gemtext;
         private Text scoreText;
         public GameObject pauseUI;
         private GameObject playerJoystickController;
@@ -20,18 +21,21 @@ namespace RWGameManager
         private GameObject playerUI;
         private float IntTimeScale;
         public GameObject[] playerPickups;
+        public int PlayerGems;
         
         // Use this for initialization
         void Start () {
             currentScene = SceneManager.GetActiveScene();
             enSpawner = FindObjectOfType<EnemySpawner>();
-            roundtext = GameObject.FindGameObjectWithTag("RoundText").GetComponent<Text>();
+            //roundtext = GameObject.FindGameObjectWithTag("RoundText").GetComponent<Text>();
             scoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Text>();
+            gemtext = GameObject.FindGameObjectWithTag("GemText").GetComponent<Text>();
             playerJoystickController = GameObject.FindGameObjectWithTag("JoystickCanvas");
             playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
 
             if(PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_highScore") != 0)
                 _highScore = PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "_highScore");
+            print(PlayerPrefs.GetInt("gems"));
         }
 	
 	    // Update is called once per frame
@@ -57,12 +61,21 @@ namespace RWGameManager
                 PauseGame();
             }
 
-            roundtext.text = round.ToString();
+            gemtext.text = PlayerGems.ToString();
             scoreText.text = score.ToString();
         }
+        
+        public void GemCollect()
+        {
+            PlayerGems++;
+        }
+
 
         public void ToMenu()
         {
+            int curgems = PlayerPrefs.GetInt("gems");
+            PlayerPrefs.SetInt("gems", curgems + PlayerGems);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -95,6 +108,9 @@ namespace RWGameManager
 
         public void reload_scene()
         {
+            int curgems = PlayerPrefs.GetInt("gems");
+            PlayerPrefs.SetInt("gems", curgems + PlayerGems);
+            PlayerPrefs.Save();
             SceneManager.LoadScene(currentScene.buildIndex);
         }
 
